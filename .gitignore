@@ -1,0 +1,15 @@
+.gradle
+/local.properties
+!/.idea/codeStyles
+/.idea/
+.DS_Store
+Thumbs.db
+/build
+/captures
+*.iml
+/target
+/stomp-mapping.txt
+*.db3
+*.db3-journal
+jwt.keys.rsa
+/__pics

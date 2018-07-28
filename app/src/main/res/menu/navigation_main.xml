@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+		android:id="@+id/menu_profile"
+		android:icon="@android:drawable/sym_def_app_icon"
+		android:title="Perfil"/>
+	<item
+		android:id="@+id/menu_history"
+		android:icon="@android:drawable/sym_def_app_icon"
+		android:title="Historial"/>
+	<item
+		android:id="@+id/menu_requests"
+		android:icon="@android:drawable/sym_def_app_icon"
+		android:title="Solicitudes"/>
+</menu>
