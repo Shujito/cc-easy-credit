@@ -1,8 +1,33 @@
-apply plugin: 'java-library'
+apply plugin: 'application'
+
+test {
+	println "testt"
+}
+
+run {
+	println "runn"
+}
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+	// server
+	implementation 'ro.pippo:pippo-core:1.10.0'
+	implementation 'ro.pippo:pippo-controller:1.10.0'
+	implementation 'ro.pippo:pippo-jetty:1.10.0'
+	// storage
+	implementation 'org.jdbi:jdbi3-core:3.4.0'
+	implementation 'org.jdbi:jdbi3-sqlobject:3.4.0'
+	implementation 'org.xerial:sqlite-jdbc:3.23.1'
+	// lombok
+	implementation 'org.projectlombok:lombok:1.18.2'
+	// utils
+	implementation 'com.google.code.gson:gson:2.8.5'
+	// logs
+	implementation 'org.slf4j:slf4j-simple:1.7.25'
+	// tests
+//	testCompileOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+	testCompileOnly 'ro.pippo:pippo-test:1.10.0'
 }
+
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
