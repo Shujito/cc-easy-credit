@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.main;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -9,6 +9,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import org.shujito.ec.FragmentHelpers;
+import org.shujito.ec.creditRequest.NewRequestActivity;
+import org.shujito.ec.R;
 import org.shujito.ec.databinding.MainBinding;
 
 /**

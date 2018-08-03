@@ -20,11 +20,11 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".MainActivity"
+			android:name=".main.MainActivity"
 			android:screenOrientation="portrait"
 			android:windowSoftInputMode="adjustResize"/>
 		<activity
-			android:name=".NewRequestActivity"
+			android:name=".creditRequest.NewRequestActivity"
 			android:screenOrientation="portrait"
 			android:windowSoftInputMode="adjustResize"/>
 	</application>

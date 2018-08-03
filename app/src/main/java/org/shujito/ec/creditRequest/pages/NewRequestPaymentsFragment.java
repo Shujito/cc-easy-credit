@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.creditRequest.pages;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.shujito.ec.KeyboardHelpers;
+import org.shujito.ec.R;
 import org.shujito.ec.databinding.NewRequestPaymentsBinding;
 
 /**
@@ -27,8 +29,6 @@ public class NewRequestPaymentsFragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
-
 	}
 
 	@Override

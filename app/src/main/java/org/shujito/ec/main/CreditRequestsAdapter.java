@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.main;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import org.shujito.ec.R;
 
 /**
  * @author shujito, 7/28/18

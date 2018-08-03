@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import org.shujito.ec.main.MainActivity;
+
 /**
  * @author shujito, 7/28/18
  */

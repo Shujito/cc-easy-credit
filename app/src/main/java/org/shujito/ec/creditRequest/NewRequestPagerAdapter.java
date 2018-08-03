@@ -1,10 +1,15 @@
-package org.shujito.ec;
+package org.shujito.ec.creditRequest;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.annimon.stream.function.Supplier;
+
+import org.shujito.ec.creditRequest.pages.NewRequestAgeFragment;
+import org.shujito.ec.creditRequest.pages.NewRequestAmountFragment;
+import org.shujito.ec.creditRequest.pages.NewRequestHasCreditCardFragment;
+import org.shujito.ec.creditRequest.pages.NewRequestPaymentsFragment;
 
 /**
  * @author shujito, 7/28/18

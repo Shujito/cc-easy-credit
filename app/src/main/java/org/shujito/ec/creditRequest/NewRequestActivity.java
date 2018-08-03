@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.creditRequest;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import org.shujito.ec.R;
 import org.shujito.ec.databinding.NewRequestBinding;
 
 import java.util.Objects;
