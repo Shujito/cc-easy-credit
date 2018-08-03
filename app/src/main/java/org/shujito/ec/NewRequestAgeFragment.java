@@ -5,30 +5,37 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.shujito.ec.databinding.ProfileBinding;
+import org.shujito.ec.databinding.NewRequestAgeBinding;
 
 /**
- * @author shujito, 7/28/18
+ * @author shujito, 8/2/18
  */
-public class ProfileFragment extends Fragment {
-	private ProfileBinding binding;
+public class NewRequestAgeFragment extends Fragment {
+	private NewRequestAgeBinding binding;
 
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		this.binding = DataBindingUtil.inflate(inflater, R.layout.profile, container, false);
+		this.binding = DataBindingUtil.inflate(inflater, R.layout.new_request_age, container, false);
 		return this.binding.getRoot();
 	}
 
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		this.binding.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-		this.binding.recyclerView.setAdapter(new CreditRequestsAdapter());
+		this.binding.age.setMinValue(18);
+		this.binding.age.setMaxValue(75);
+	}
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		if (isVisibleToUser && this.binding != null) {
+			this.binding.root.post(() -> KeyboardHelpers.hide(this.binding.root));
+		}
 	}
 }

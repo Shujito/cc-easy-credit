@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="lastPage"
+			type="boolean"/>
+	</data>
+
+	<RelativeLayout
+		android:id="@+id/root"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<android.support.design.widget.AppBarLayout
+			android:id="@+id/app_bar_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:elevation="2dp">
+
+			<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:theme="@style/Theme.AppCompat"
+				tools:subtitle="Subtitle"
+				tools:title="Title"/>
+		</android.support.design.widget.AppBarLayout>
+
+		<android.support.design.widget.CoordinatorLayout
+			android:id="@+id/coordinator_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@+id/app_bar_layout">
+
+			<android.support.v4.view.ViewPager
+				android:id="@+id/view_pager"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"/>
+
+			<android.support.design.widget.FloatingActionButton
+				android:id="@+id/floating_action_button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="bottom|end"
+				android:layout_margin="@dimen/fab_margin"
+				android:src="@{ lastPage ? @drawable/ic_done : @drawable/ic_arrow_forward }"
+				android:tint="@color/white"
+				app:elevation="4dp"
+				app:fabSize="normal"
+				tools:src="@drawable/ic_arrow_forward"/>
+		</android.support.design.widget.CoordinatorLayout>
+	</RelativeLayout>
+</layout>

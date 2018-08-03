@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<data>
+
+		<variable
+			name="months"
+			type="Integer"/>
+	</data>
+
+	<LinearLayout
+		android:id="@+id/root"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clipToPadding="false"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"
+			android:text="@string/new_request_payment_caption"
+			android:textAppearance="?android:textAppearanceMedium"/>
+
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="8dp">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="8dp">
+
+				<ImageView
+					android:id="@+id/icon_number"
+					android:layout_width="48dp"
+					android:layout_height="48dp"
+					android:contentDescription="@string/app_name"
+					android:scaleType="center"
+					android:src="@drawable/ic_numeric_3_box_outline_48"/>
+
+				<ImageView
+					android:id="@+id/icon_rate"
+					android:layout_width="48dp"
+					android:layout_height="48dp"
+					android:layout_below="@+id/icon_number"
+					android:layout_marginTop="8dp"
+					android:contentDescription="@string/app_name"
+					android:scaleType="center"
+					android:src="@drawable/ic_percent_48"/>
+
+				<ImageView
+					android:id="@+id/icon_coin"
+					android:layout_width="48dp"
+					android:layout_height="48dp"
+					android:layout_below="@+id/icon_rate"
+					android:layout_marginTop="8dp"
+					android:contentDescription="@string/app_name"
+					android:scaleType="center"
+					android:src="@drawable/ic_coin_48"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/icon_number"
+					android:layout_alignTop="@+id/icon_number"
+					android:layout_marginLeft="8dp"
+					android:layout_marginStart="8dp"
+					android:layout_toEndOf="@+id/icon_number"
+					android:layout_toRightOf="@+id/icon_number"
+					android:gravity="center_vertical"
+					android:text="@string/new_request_months_label"
+					android:textAppearance="?android:textAppearanceSmall"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/icon_rate"
+					android:layout_alignTop="@+id/icon_rate"
+					android:layout_marginLeft="8dp"
+					android:layout_marginStart="8dp"
+					android:layout_toEndOf="@+id/icon_rate"
+					android:layout_toRightOf="@+id/icon_rate"
+					android:gravity="center_vertical"
+					android:text="@string/new_request_interests_label"
+					android:textAppearance="?android:textAppearanceSmall"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/icon_coin"
+					android:layout_alignTop="@+id/icon_coin"
+					android:layout_marginLeft="8dp"
+					android:layout_marginStart="8dp"
+					android:layout_toEndOf="@+id/icon_coin"
+					android:layout_toRightOf="@+id/icon_coin"
+					android:gravity="center_vertical"
+					android:text="@string/new_request_total_label"
+					android:textAppearance="?android:textAppearanceSmall"/>
+			</RelativeLayout>
+		</android.support.v7.widget.CardView>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:clipToPadding="false"
+			android:orientation="horizontal"
+			android:paddingBottom="8dp"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp">
+
+			<android.support.v7.widget.CardView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1">
+
+				<org.shujito.ec.SquareLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:clickable="true"
+					android:focusable="true"
+					android:foreground="?selectableItemBackground">
+
+					<ImageView
+						android:layout_width="48dp"
+						android:layout_height="48dp"
+						android:layout_centerInParent="true"
+						android:contentDescription="@string/app_name"
+						android:scaleType="center"
+						android:src="@drawable/ic_numeric_3_box_outline_48"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_alignParentBottom="true"
+						android:gravity="center"
+						android:text="@string/new_request_months_label"
+						android:textAppearance="?android:textAppearanceSmall"
+						android:textSize="12sp"/>
+				</org.shujito.ec.SquareLayout>
+			</android.support.v7.widget.CardView>
+
+			<android.support.v7.widget.CardView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"
+				android:layout_weight="1">
+
+				<org.shujito.ec.SquareLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:clickable="true"
+					android:focusable="true"
+					android:foreground="?selectableItemBackground">
+
+					<ImageView
+						android:layout_width="48dp"
+						android:layout_height="48dp"
+						android:layout_centerInParent="true"
+						android:contentDescription="@string/app_name"
+						android:scaleType="center"
+						android:src="@drawable/ic_numeric_6_box_outline_48"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_alignParentBottom="true"
+						android:gravity="center"
+						android:text="@string/new_request_months_label"
+						android:textAppearance="?android:textAppearanceSmall"
+						android:textSize="12sp"/>
+				</org.shujito.ec.SquareLayout>
+			</android.support.v7.widget.CardView>
+
+			<android.support.v7.widget.CardView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1">
+
+				<org.shujito.ec.SquareLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:clickable="true"
+					android:focusable="true"
+					android:foreground="?selectableItemBackground">
+
+					<ImageView
+						android:layout_width="48dp"
+						android:layout_height="48dp"
+						android:layout_centerInParent="true"
+						android:contentDescription="@string/app_name"
+						android:scaleType="center"
+						android:src="@drawable/ic_numeric_9_box_outline_48"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_alignParentBottom="true"
+						android:gravity="center"
+						android:text="@string/new_request_months_label"
+						android:textAppearance="?android:textAppearanceSmall"
+						android:textSize="12sp"/>
+				</org.shujito.ec.SquareLayout>
+			</android.support.v7.widget.CardView>
+		</LinearLayout>
+	</LinearLayout>
+</layout>

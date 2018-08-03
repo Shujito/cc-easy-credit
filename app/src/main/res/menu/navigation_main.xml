@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
 		android:id="@+id/menu_profile"
-		android:icon="@android:drawable/sym_def_app_icon"
-		android:title="Perfil"/>
+		android:icon="@drawable/ic_account_circle"
+		android:title="@string/profile"/>
 	<item
 		android:id="@+id/menu_history"
-		android:icon="@android:drawable/sym_def_app_icon"
-		android:title="Historial"/>
+		android:icon="@drawable/ic_assignment"
+		android:title="@string/history"/>
 	<item
 		android:id="@+id/menu_requests"
-		android:icon="@android:drawable/sym_def_app_icon"
-		android:title="Solicitudes"/>
+		android:icon="@drawable/ic_account_balance"
+		android:title="@string/credit_requests"/>
 </menu>
