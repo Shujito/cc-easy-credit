@@ -1,61 +1,62 @@
 package org.shujito.ec.network;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.support.annotation.StringRes;
+import android.support.annotation.DrawableRes;
 
-import org.shujito.ec.BR;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import org.shujito.ec.R;
 
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * @author shujito, 8/4/18
  */
-@ToString
-public class CreditRequest extends BaseObservable {
-	private String amount;
-	private boolean hasCreditCard;
-	private int paymentType;
+@Data
+public class CreditRequest {
+	public static final String PENDING = "Pendiente";
+	public static final String ACCEPTED = "Aceptada";
+	public static final String REJECTED = "Rechazada";
 
-	@Bindable
-	public String getAmount() {
-		return this.amount;
-	}
+	public enum Status {
+		@SerializedName(PENDING)
+		Pending(PENDING, R.drawable.ic_info),
+		@SerializedName(ACCEPTED)
+		Accepted(ACCEPTED, R.drawable.ic_check_circle),
+		@SerializedName(REJECTED)
+		Rejected(REJECTED, R.drawable.ic_cancel),
+		//
+		;
+		public final String label;
+		public final int drawable;
 
-	@Bindable
-	public boolean isHasCreditCard() {
-		return this.hasCreditCard;
-	}
-
-	@Bindable
-	public int getPaymentType() {
-		return paymentType;
-	}
-
-	public void setHasCreditCard(boolean hasCreditCard) {
-		this.hasCreditCard = hasCreditCard;
-		this.notifyPropertyChanged(BR.hasCreditCard);
-	}
-
-	public void setAmount(String amount) {
-		this.amount = amount;
-		this.notifyPropertyChanged(BR.amount);
-	}
-
-	public void setPaymentType(int paymentType) {
-		this.paymentType = paymentType;
-		this.notifyPropertyChanged(BR.paymentType);
-	}
-
-	@StringRes
-	public int validate() {
-		if (this.amount == null || this.amount.isEmpty()) {
-			return R.string.enter_amount;
+		Status(String label, int drawable) {
+			this.label = label;
+			this.drawable = drawable;
 		}
-		if (this.paymentType == 0) {
-			return R.string.select_payment_type;
-		}
-		return 0;
 	}
+
+	public enum Month {
+		@SerializedName("3") _3(R.drawable.ic_numeric_3_box_outline),
+		@SerializedName("6") _6(R.drawable.ic_numeric_6_box_outline),
+		@SerializedName("9") _9(R.drawable.ic_numeric_9_box_outline),
+		//
+		;
+		public final int drawable;
+
+		Month(@DrawableRes int drawable) {
+			this.drawable = drawable;
+		}
+	}
+
+	@Expose
+	Double amount;
+	@Expose
+	Month months;
+	@Expose
+	Double interest;
+	@Expose
+	Status status;
+	@Expose
+	Double total;
 }

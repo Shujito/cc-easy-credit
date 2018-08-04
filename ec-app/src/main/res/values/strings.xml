@@ -11,10 +11,12 @@
 	<string name="new_request_interests_label">Intereses</string>
 	<string name="new_request_total_label">Pago total despues del plazo</string>
 	<string name="credit_request_sample_amount">$ 4,000.00</string>
-	<string name="profile_caption_sample">Tienes 1 solicitud de crédito pendiente</string>
+	<string name="pending_credit_requests">Tienes %1$d solicitud de crédito pendiente</string>
+	<string name="no_pending_credit_requests">No tienes solicitides pendientes</string>
 	<string name="auth_username">Nombre de usuario</string>
 	<string name="auth_edad">Edad</string>
 	<string name="auth_access">Acceder</string>
 	<string name="select_payment_type">Debe seleccionar un plazo</string>
 	<string name="enter_amount">Ingrese el monto a solicitar</string>
+	<string name="empty">(Vacío)</string>
 </resources>

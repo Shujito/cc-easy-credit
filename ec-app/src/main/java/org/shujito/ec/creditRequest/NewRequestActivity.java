@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,13 +11,13 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.parceler.Parcels;
-import org.shujito.ec.network.EasyCreditApi;
-import org.shujito.ec.util.KeyboardHelpers;
 import org.shujito.ec.R;
-import org.shujito.ec.util.SnackbarWrapper;
 import org.shujito.ec.databinding.NewRequestBinding;
-import org.shujito.ec.network.CreditRequest;
+import org.shujito.ec.network.CreditRequestForm;
+import org.shujito.ec.network.EasyCreditApi;
 import org.shujito.ec.network.User;
+import org.shujito.ec.util.KeyboardHelpers;
+import org.shujito.ec.util.SnackbarWrapper;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -37,7 +36,7 @@ public class NewRequestActivity extends RxAppCompatActivity implements View.OnCl
 		super.onCreate(savedInstanceState);
 		this.user = Parcels.unwrap(this.getIntent().getParcelableExtra(User.TAG));
 		this.binding = DataBindingUtil.setContentView(this, R.layout.new_request);
-		CreditRequest creditRequest = new CreditRequest();
+		CreditRequestForm creditRequest = new CreditRequestForm();
 		this.binding.setCreditRequest(creditRequest);
 		this.setSupportActionBar(this.binding.toolbar);
 		this.binding.floatingActionButton.setOnClickListener(this);
@@ -46,7 +45,7 @@ public class NewRequestActivity extends RxAppCompatActivity implements View.OnCl
 
 	@Override
 	public void onClick(View v) {
-		CreditRequest creditRequest = this.binding.getCreditRequest();
+		CreditRequestForm creditRequest = this.binding.getCreditRequest();
 		if (creditRequest == null) {
 			return;
 		}
@@ -58,8 +57,7 @@ public class NewRequestActivity extends RxAppCompatActivity implements View.OnCl
 			this.snackbarWrapper.dismiss();
 		}
 		KeyboardHelpers.hide(v);
-		Log.i(TAG, "onClick: " + creditRequest);
-		EasyCreditApi.INSTANCE.credit(
+		EasyCreditApi.INSTANCE.newCredit(
 			this.user.getId(),
 			creditRequest.getAmount(),
 			creditRequest.getPaymentType()

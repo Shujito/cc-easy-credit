@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="creditRequest"
+			type="org.shujito.ec.network.CreditRequest"/>
+	</data>
 
 	<android.support.v7.widget.CardView
 		android:layout_width="match_parent"
@@ -12,7 +20,7 @@
 		<RelativeLayout
 			android:id="@+id/root"
 			android:layout_width="match_parent"
-			android:layout_height="64dp"
+			android:layout_height="72dp"
 			android:clickable="true"
 			android:focusable="true"
 			android:foreground="?selectableItemBackground"
@@ -27,22 +35,48 @@
 				android:layout_marginEnd="8dp"
 				android:layout_marginRight="8dp"
 				android:contentDescription="@string/app_name"
-				android:src="@drawable/ic_check_circle"/>
+				android:src="@{ creditRequest.status.drawable }"
+				tools:src="@drawable/ic_check_circle"/>
 
 			<TextView
-				android:id="@+id/amount"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_alignWithParentIfMissing="true"
-				android:layout_centerVertical="true"
-				android:layout_marginEnd="8dp"
-				android:layout_marginRight="8dp"
+				android:layout_above="@+id/amount"
 				android:layout_toEndOf="@+id/status_icon"
 				android:layout_toLeftOf="@+id/credit_card"
 				android:layout_toRightOf="@+id/status_icon"
 				android:layout_toStartOf="@+id/credit_card"
-				android:text="@string/credit_request_sample_amount"
-				android:textAppearance="?android:textAppearanceLarge"/>
+				android:text="@{ creditRequest.status.label }"
+				android:textAppearance="?android:textAppearanceSmall"
+				tools:text="Aceptada"/>
+
+			<TextView
+				android:id="@+id/amount"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignWithParentIfMissing="true"
+				android:layout_centerVertical="true"
+				android:layout_toEndOf="@+id/status_icon"
+				android:layout_toLeftOf="@+id/total"
+				android:layout_toRightOf="@+id/status_icon"
+				android:layout_toStartOf="@+id/total"
+				android:text='@{ String.format("$%,.2f", creditRequest.amount) }'
+				android:textAppearance="?android:textAppearanceLarge"
+				tools:text="@string/credit_request_sample_amount"/>
+
+			<TextView
+				android:id="@+id/total"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_marginEnd="8dp"
+				android:layout_marginRight="8dp"
+				android:layout_toLeftOf="@+id/credit_card"
+				android:layout_toStartOf="@+id/credit_card"
+				android:gravity="end"
+				android:text='@{ String.format("Por pagar:\n$%,.2f", creditRequest.total) }'
+				android:textAppearance="?android:textAppearanceSmall"
+				tools:text="Por pagar:\n$4,200.0"/>
 
 			<ImageView
 				android:id="@+id/credit_card"
@@ -55,7 +89,8 @@
 				android:layout_toStartOf="@+id/payment_icon"
 				android:contentDescription="@string/app_name"
 				android:scaleType="center"
-				android:src="@drawable/ic_credit_card"/>
+				android:src="@drawable/ic_credit_card"
+				android:visibility="gone"/>
 
 			<ImageView
 				android:id="@+id/payment_icon"
@@ -66,7 +101,8 @@
 				android:layout_centerVertical="true"
 				android:contentDescription="@string/app_name"
 				android:scaleType="center"
-				android:src="@drawable/ic_numeric_3_box_outline"/>
+				android:src="@{ creditRequest.months.drawable }"
+				tools:src="@drawable/ic_numeric_3_box_outline"/>
 		</RelativeLayout>
 	</android.support.v7.widget.CardView>
 </layout>

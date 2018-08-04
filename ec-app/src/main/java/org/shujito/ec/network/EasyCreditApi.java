@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 
 import org.shujito.ec.util.GsonUtils;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Single;
@@ -18,7 +19,9 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * @author shujito, 8/3/18
@@ -64,10 +67,21 @@ public class EasyCreditApi {
 
 		@POST("credit")
 		@FormUrlEncoded
-		Single<Credit> credit(
+		Single<Credit> newCredit(
 			@Field("userId") int userId,
 			@Field("amount") String amount,
 			@Field("months") int paymentType
+		);
+
+		@GET("credit")
+		Single<List<CreditRequest>> getCreditRequests(
+			@Query("userId") int userId,
+			@Query("status") String status
+		);
+
+		@GET("credit")
+		Single<List<CreditRequest>> getCreditRequests(
+			@Query("userId") int userId
 		);
 	}
 }

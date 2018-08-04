@@ -1,1 +1,1 @@
-select * from credit_status where _id is :id
+select * from credit_status where credit_id is :id

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="user"
+			type="org.shujito.ec.network.User"/>
+	</data>
 
 	<RelativeLayout
 		android:id="@+id/root"
@@ -17,13 +25,13 @@
 
 			<RelativeLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="48dp"
 				android:layout_margin="8dp">
 
 				<ImageView
 					android:id="@+id/avatar"
-					android:layout_width="64dp"
-					android:layout_height="64dp"
+					android:layout_width="48dp"
+					android:layout_height="48dp"
 					android:layout_marginEnd="8dp"
 					android:layout_marginRight="8dp"
 					android:background="@color/gray"
@@ -31,14 +39,26 @@
 					android:src="@android:mipmap/sym_def_app_icon"/>
 
 				<TextView
+					android:id="@+id/name"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_toEndOf="@+id/avatar"
 					android:layout_toRightOf="@+id/avatar"
-					android:text="@string/app_name"
-					android:textAppearance="?android:textAppearanceLarge"
+					android:text="@{ user.username }"
+					android:textAppearance="?android:textAppearanceMedium"
 					android:textColor="@color/black"
-					android:textStyle="bold"/>
+					android:textStyle="bold"
+					tools:text="Marisa Kirisame"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/name"
+					android:layout_toEndOf="@+id/avatar"
+					android:layout_toRightOf="@+id/avatar"
+					android:text='@{ String.format("%d años", user.age) }'
+					android:textAppearance="?android:textAppearanceSmall"
+					tools:text="23 años"/>
 			</RelativeLayout>
 		</android.support.v7.widget.CardView>
 
@@ -51,7 +71,7 @@
 			android:layout_marginLeft="16dp"
 			android:layout_marginRight="16dp"
 			android:layout_marginTop="8dp"
-			android:text="@string/profile_caption_sample"
+			android:text="@string/no_pending_credit_requests"
 			android:textAppearance="?android:textAppearanceMedium"/>
 
 		<android.support.v7.widget.RecyclerView

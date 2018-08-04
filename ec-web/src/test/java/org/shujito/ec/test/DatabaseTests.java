@@ -201,8 +201,8 @@ public class DatabaseTests {
 			CreditStatus newCreditStatus = new CreditStatus();
 			newCreditStatus.setCreditId(credit.getId());
 			newCreditStatus.setCreditStatusTypeId(creditStatusType.getId());
-			int id = dao.insert(newCreditStatus);
-			return dao.find(id);
+			dao.insert(newCreditStatus);
+			return dao.find(credit.getId());
 		});
 		assertNotNull(creditStatus);
 		assertEquals(credit.getId(), creditStatus.getCreditId());
