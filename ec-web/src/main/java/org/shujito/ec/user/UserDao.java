@@ -22,8 +22,8 @@ public interface UserDao {
 	@SqlQuery
 	List<User> all();
 
-	@GetGeneratedKeys
 	@SqlUpdate
+	@GetGeneratedKeys
 	int insert(@BindBean User user);
 
 	@SqlQuery

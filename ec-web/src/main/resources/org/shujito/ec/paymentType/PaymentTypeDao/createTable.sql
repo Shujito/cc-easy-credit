@@ -3,4 +3,4 @@ create table if not exists payment_type (
 	months integer not null,
 	interest real not null,
 	unique (months, interest) on conflict fail
-);
+)

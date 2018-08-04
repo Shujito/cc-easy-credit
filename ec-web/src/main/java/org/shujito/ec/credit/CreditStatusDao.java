@@ -1,27 +1,26 @@
-package org.shujito.ec.paymentType;
+package org.shujito.ec.credit;
 
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
+import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.locator.UseClasspathSqlLocator;
 import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
-import java.util.List;
-
 /**
  * @author shujito, 8/3/18
  */
 @UseClasspathSqlLocator
-@RegisterBeanMapper(PaymentType.class)
-public interface PaymentTypeDao {
+@RegisterBeanMapper(CreditStatus.class)
+public interface CreditStatusDao {
 	@SqlUpdate
 	void createTable();
 
-	@SqlQuery
-	List<PaymentType> all();
-
 	@SqlUpdate
 	@GetGeneratedKeys
-	int insert(@BindBean PaymentType paymentTypes);
+	int insert(@BindBean CreditStatus newCreditStatus);
+
+	@SqlQuery
+	CreditStatus find(@Bind("id") int id);
 }

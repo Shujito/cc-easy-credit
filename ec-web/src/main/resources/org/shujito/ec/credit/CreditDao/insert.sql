@@ -8,4 +8,4 @@ insert into credit (
 	:amount,
 	:approved,
 	:paymentTypeId
-);
+)

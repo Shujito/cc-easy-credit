@@ -6,4 +6,4 @@ create table if not exists credit (
 	payment_type_id integer not null,
 	foreign key (user_id) references user(_id),
 	foreign key (payment_type_id) references payment_type(_id)
-);
+)

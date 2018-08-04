@@ -1,11 +1,19 @@
 apply plugin: 'application'
 
 test {
-	println "testt"
 }
 
 run {
-	println "runn"
+}
+
+classes {
+	doLast {
+		copy {
+			from file("${buildDir}/resources")
+			into file("${buildDir}/classes/java")
+		}
+		delete "${buildDir}/resources"
+	}
 }
 
 dependencies {
@@ -24,7 +32,6 @@ dependencies {
 	// logs
 	implementation 'org.slf4j:slf4j-simple:1.7.25'
 	// tests
-//	testCompileOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
 	testCompileOnly 'ro.pippo:pippo-test:1.10.0'
 }
 
