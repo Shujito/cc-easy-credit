@@ -1,4 +1,6 @@
-package org.shujito.ec.credit;
+package org.shujito.ec.credit.model;
+
+import com.google.gson.annotations.Expose;
 
 import lombok.Data;
 
@@ -7,9 +9,12 @@ import lombok.Data;
  */
 @Data
 public class Credit {
+	@Expose
 	private int id;
+	@Expose
 	private int userId;
+	@Expose
 	private double amount;
-	private boolean approved;
+	@Expose
 	private int paymentTypeId;
 }

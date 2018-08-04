@@ -6,8 +6,6 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import org.shujito.ec.main.MainActivity;
-
 /**
  * @author shujito, 7/28/18
  */
@@ -16,8 +14,8 @@ public class SplashActivity extends AppCompatActivity {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		new Handler().postDelayed(() -> {
-			this.startActivity(new Intent(this, MainActivity.class));
+			this.startActivity(new Intent(this, AuthActivity.class));
 			this.finish();
-		}, 1500);
+		}, 500);
 	}
 }

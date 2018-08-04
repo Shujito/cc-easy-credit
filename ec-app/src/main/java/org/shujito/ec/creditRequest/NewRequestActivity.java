@@ -3,47 +3,76 @@ package org.shujito.ec.creditRequest;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
+import org.parceler.Parcels;
+import org.shujito.ec.EasyCreditApi;
+import org.shujito.ec.KeyboardHelpers;
 import org.shujito.ec.R;
+import org.shujito.ec.SnackbarWrapper;
 import org.shujito.ec.databinding.NewRequestBinding;
+import org.shujito.ec.model.CreditRequest;
+import org.shujito.ec.model.User;
 
-import java.util.Objects;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author shujito, 7/28/18
  */
-public class NewRequestActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewRequestActivity extends RxAppCompatActivity implements View.OnClickListener {
+	private static final String TAG = NewRequestActivity.class.getSimpleName();
+	private SnackbarWrapper snackbarWrapper;
 	private NewRequestBinding binding;
+	private User user;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.user = Parcels.unwrap(this.getIntent().getParcelableExtra(User.TAG));
 		this.binding = DataBindingUtil.setContentView(this, R.layout.new_request);
+		CreditRequest creditRequest = new CreditRequest();
+		this.binding.setCreditRequest(creditRequest);
 		this.setSupportActionBar(this.binding.toolbar);
-		this.binding.viewPager.setAdapter(new NewRequestPagerAdapter(this.getSupportFragmentManager()));
 		this.binding.floatingActionButton.setOnClickListener(this);
+		this.snackbarWrapper = new SnackbarWrapper(this.binding.coordinatorLayout);
 	}
 
 	@Override
 	public void onClick(View v) {
-		int currentItem = this.binding.viewPager.getCurrentItem();
-		int count = Objects.requireNonNull(this.binding.viewPager.getAdapter()).getCount();
-		if (currentItem >= count - 1) {
-			this.finish();
-		} else {
-			this.binding.viewPager.setCurrentItem(currentItem + 1);
+		CreditRequest creditRequest = this.binding.getCreditRequest();
+		if (creditRequest == null) {
+			return;
 		}
-	}
-
-	@Override
-	public void onBackPressed() {
-		int currentItem = this.binding.viewPager.getCurrentItem();
-		if (currentItem <= 0) {
-			super.onBackPressed();
+		int validate = creditRequest.validate();
+		if (validate != 0) {
+			this.snackbarWrapper.show(validate, Toast.LENGTH_SHORT);
+			return;
 		} else {
-			this.binding.viewPager.setCurrentItem(currentItem - 1);
+			this.snackbarWrapper.dismiss();
 		}
+		KeyboardHelpers.hide(v);
+		Log.i(TAG, "onClick: " + creditRequest);
+		EasyCreditApi.INSTANCE.credit(
+			this.user.getId(),
+			creditRequest.getAmount(),
+			creditRequest.getPaymentType()
+		)
+			.subscribeOn(Schedulers.io())
+			.observeOn(AndroidSchedulers.mainThread())
+			.compose(this.bindUntilEvent(ActivityEvent.PAUSE))
+			.subscribe((credit, error) -> {
+				if (error != null) {
+					this.snackbarWrapper.show(error.getMessage(), Snackbar.LENGTH_LONG);
+					return;
+				}
+				this.finish();
+			});
 	}
 }

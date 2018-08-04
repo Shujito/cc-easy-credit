@@ -3,6 +3,13 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
+	<data>
+
+		<variable
+			name="user"
+			type="org.shujito.ec.model.User"/>
+	</data>
+
 	<RelativeLayout
 		android:id="@+id/coordinator_layout"
 		android:layout_width="match_parent"
@@ -25,7 +32,6 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="bottom|end"
 				android:layout_margin="@dimen/fab_margin"
-
 				android:src="@drawable/ic_add"
 				android:tint="@color/white"
 				app:elevation="2dp"

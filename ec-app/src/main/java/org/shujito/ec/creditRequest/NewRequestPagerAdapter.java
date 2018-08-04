@@ -17,7 +17,7 @@ import org.shujito.ec.creditRequest.pages.NewRequestPaymentsFragment;
 public class NewRequestPagerAdapter extends FragmentPagerAdapter {
 	private enum Pages {
 		Amount(NewRequestAmountFragment::new),
-		Age(NewRequestAgeFragment::new),
+//		Age(NewRequestAgeFragment::new),
 		HasCreditCard(NewRequestHasCreditCardFragment::new),
 		Payments(NewRequestPaymentsFragment::new),
 		//

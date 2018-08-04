@@ -1,9 +1,7 @@
 apply plugin: 'application'
 
-test {
-}
-
-run {
+compileJava {
+	options.compilerArgs << '-parameters'
 }
 
 classes {

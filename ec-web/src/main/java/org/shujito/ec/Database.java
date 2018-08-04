@@ -2,6 +2,7 @@ package org.shujito.ec;
 
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
+import org.sqlite.SQLiteConfig;
 
 import lombok.Getter;
 
@@ -10,10 +11,13 @@ import lombok.Getter;
  */
 public class Database {
 	@Getter
-	private static final Jdbi jdbi;
+	private static Jdbi jdbi;
 
 	static {
-		jdbi = Jdbi.create("jdbc:sqlite::memory:");
+		SQLiteConfig sqLiteConfig = new SQLiteConfig();
+		sqLiteConfig.enforceForeignKeys(true);
+		sqLiteConfig.setReadUncommited(true);
+		jdbi = Jdbi.create("jdbc:sqlite:ec.db3", sqLiteConfig.toProperties());
 		jdbi.installPlugin(new SqlObjectPlugin());
 	}
 }

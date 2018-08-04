@@ -1,20 +1,22 @@
 package org.shujito.ec.test;
 
 import org.jdbi.v3.core.statement.UnableToExecuteStatementException;
+import org.junit.Before;
 import org.junit.Test;
 import org.shujito.ec.Database;
-import org.shujito.ec.credit.Credit;
-import org.shujito.ec.credit.CreditDao;
-import org.shujito.ec.credit.CreditStatus;
-import org.shujito.ec.credit.CreditStatusDao;
-import org.shujito.ec.credit.CreditStatusType;
-import org.shujito.ec.credit.CreditStatusTypeDao;
+import org.shujito.ec.credit.dao.CreditDao;
+import org.shujito.ec.credit.dao.CreditStatusDao;
+import org.shujito.ec.credit.dao.CreditStatusTypeDao;
+import org.shujito.ec.credit.model.Credit;
+import org.shujito.ec.credit.model.CreditStatus;
+import org.shujito.ec.credit.model.CreditStatusType;
 import org.shujito.ec.paymentType.PaymentType;
 import org.shujito.ec.paymentType.PaymentTypeDao;
 import org.shujito.ec.user.User;
 import org.shujito.ec.user.UserDao;
 import org.sqlite.SQLiteException;
 
+import java.io.File;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -28,6 +30,14 @@ import static org.junit.Assert.fail;
 public class DatabaseTests {
 	static final String USERNAME = "alberto";
 	static final int AGE = 27;
+
+	@Before
+	public void setUp() {
+		File file = new File("ec.db3");
+		if (file.exists()) {
+			assertTrue(file.delete());
+		}
+	}
 
 	@Test
 	public void testUser() {
@@ -129,7 +139,6 @@ public class DatabaseTests {
 			Credit newCredit = new Credit();
 			newCredit.setUserId(user.getId());
 			newCredit.setAmount(4000);
-			newCredit.setApproved(true);
 			newCredit.setPaymentTypeId(paymentTypeId);
 			int id = dao.insert(newCredit);
 			return dao.find(id);
@@ -137,7 +146,6 @@ public class DatabaseTests {
 		assertNotNull(credit);
 		assertEquals(credit.getUserId(), user.getId());
 		assertEquals(credit.getAmount(), 4000.0, 0);
-		assertTrue(credit.isApproved());
 		assertEquals(credit.getPaymentTypeId(), paymentTypeId);
 	}
 
@@ -168,7 +176,6 @@ public class DatabaseTests {
 			Credit newCredit = new Credit();
 			newCredit.setUserId(user.getId());
 			newCredit.setAmount(4000);
-			newCredit.setApproved(true);
 			newCredit.setPaymentTypeId(paymentTypeId);
 			int id = dao.insert(newCredit);
 			return dao.find(id);
@@ -176,7 +183,6 @@ public class DatabaseTests {
 		assertNotNull(credit);
 		assertEquals(credit.getUserId(), user.getId());
 		assertEquals(credit.getAmount(), 4000.0, 0);
-		assertTrue(credit.isApproved());
 		assertEquals(credit.getPaymentTypeId(), paymentTypeId);
 		CreditStatusType creditStatusType = Database.getJdbi().withExtension(CreditStatusTypeDao.class, dao -> {
 			dao.createTable();
@@ -194,12 +200,12 @@ public class DatabaseTests {
 			dao.createTable();
 			CreditStatus newCreditStatus = new CreditStatus();
 			newCreditStatus.setCreditId(credit.getId());
-			newCreditStatus.setCreditStatusId(creditStatusType.getId());
+			newCreditStatus.setCreditStatusTypeId(creditStatusType.getId());
 			int id = dao.insert(newCreditStatus);
 			return dao.find(id);
 		});
 		assertNotNull(creditStatus);
 		assertEquals(credit.getId(), creditStatus.getCreditId());
-		assertEquals(creditStatusType.getId(), creditStatus.getCreditStatusId());
+		assertEquals(creditStatusType.getId(), creditStatus.getCreditStatusTypeId());
 	}
 }

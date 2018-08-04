@@ -1,6 +1,8 @@
-package org.shujito.ec.user;
+package org.shujito.ec.model;
 
 import com.google.gson.annotations.Expose;
+
+import org.parceler.Parcel;
 
 import lombok.Data;
 
@@ -8,7 +10,9 @@ import lombok.Data;
  * @author shujito, 8/3/18
  */
 @Data
+@Parcel
 public class User {
+	public static final String TAG = User.class.getName();
 	@Expose
 	private int id;
 	@Expose

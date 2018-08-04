@@ -1,4 +1,6 @@
-package org.shujito.ec.credit;
+package org.shujito.ec.credit.model;
+
+import com.google.gson.annotations.Expose;
 
 import lombok.Data;
 
@@ -7,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class CreditStatusType {
+	@Expose
 	private int id;
+	@Expose
 	private String description;
 }

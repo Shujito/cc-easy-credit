@@ -6,8 +6,8 @@
 	<data>
 
 		<variable
-			name="lastPage"
-			type="boolean"/>
+			name="creditRequest"
+			type="org.shujito.ec.model.CreditRequest"/>
 	</data>
 
 	<RelativeLayout
@@ -36,10 +36,156 @@
 			android:layout_height="match_parent"
 			android:layout_below="@+id/app_bar_layout">
 
-			<android.support.v4.view.ViewPager
-				android:id="@+id/view_pager"
+			<ScrollView
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"/>
+				android:layout_height="match_parent"
+				android:clipToPadding="false"
+				android:paddingBottom="64dp">
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:paddingTop="8dp">
+
+					<android.support.design.widget.TextInputLayout
+						android:layout_width="match_parent"
+						android:layout_height="84dp"
+						android:layout_marginLeft="16dp"
+						android:layout_marginRight="16dp">
+
+						<android.support.design.widget.TextInputEditText
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:hint="@string/new_request_amount"
+							android:inputType="number"
+							android:text="@={ creditRequest.amount }"/>
+					</android.support.design.widget.TextInputLayout>
+
+					<android.support.v7.widget.SwitchCompat
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="16dp"
+						android:layout_marginRight="16dp"
+						android:onCheckedChanged="@{ (v,b) -> creditRequest.setHasCreditCard(b) }"
+						android:text="@string/new_request_credit_card"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="16dp"
+						android:layout_marginRight="16dp"
+						android:layout_marginTop="16dp"
+						android:text="@string/new_request_payment_caption"
+						android:textAppearance="?android:textAppearanceMedium"/>
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:clipToPadding="false"
+						android:padding="16dp">
+
+						<android.support.v7.widget.CardView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							app:cardElevation="4dp">
+
+							<org.shujito.ec.SquareLayout
+								android:layout_width="match_parent"
+								android:layout_height="0dp"
+								android:clickable="true"
+								android:focusable="true"
+								android:foreground="?selectableItemBackground"
+								android:onClick="@{ () -> creditRequest.setPaymentType(3) }">
+
+								<ImageView
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:layout_centerInParent="true"
+									android:contentDescription="@string/app_name"
+									android:scaleType="center"
+									android:src="@drawable/ic_numeric_3_box_outline_48"/>
+
+								<TextView
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_alignParentBottom="true"
+									android:gravity="center"
+									android:text="@string/new_request_months_label"
+									android:textAppearance="?android:textAppearanceSmall"
+									android:textSize="12sp"/>
+							</org.shujito.ec.SquareLayout>
+						</android.support.v7.widget.CardView>
+
+						<android.support.v7.widget.CardView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="8dp"
+							android:layout_marginRight="8dp"
+							android:layout_weight="1">
+
+							<org.shujito.ec.SquareLayout
+								android:layout_width="match_parent"
+								android:layout_height="0dp"
+								android:clickable="true"
+								android:focusable="true"
+								android:foreground="?selectableItemBackground"
+								android:onClick="@{ () -> creditRequest.setPaymentType(6) }">
+
+								<ImageView
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:layout_centerInParent="true"
+									android:contentDescription="@string/app_name"
+									android:scaleType="center"
+									android:src="@drawable/ic_numeric_6_box_outline_48"/>
+
+								<TextView
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_alignParentBottom="true"
+									android:gravity="center"
+									android:text="@string/new_request_months_label"
+									android:textAppearance="?android:textAppearanceSmall"
+									android:textSize="12sp"/>
+							</org.shujito.ec.SquareLayout>
+						</android.support.v7.widget.CardView>
+
+						<android.support.v7.widget.CardView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1">
+
+							<org.shujito.ec.SquareLayout
+								android:layout_width="match_parent"
+								android:layout_height="0dp"
+								android:clickable="true"
+								android:focusable="true"
+								android:foreground="?selectableItemBackground"
+								android:onClick="@{ () -> creditRequest.setPaymentType(9) }">
+
+								<ImageView
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:layout_centerInParent="true"
+									android:contentDescription="@string/app_name"
+									android:scaleType="center"
+									android:src="@drawable/ic_numeric_9_box_outline_48"/>
+
+								<TextView
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_alignParentBottom="true"
+									android:gravity="center"
+									android:text="@string/new_request_months_label"
+									android:textAppearance="?android:textAppearanceSmall"
+									android:textSize="12sp"/>
+							</org.shujito.ec.SquareLayout>
+						</android.support.v7.widget.CardView>
+					</LinearLayout>
+				</LinearLayout>
+			</ScrollView>
 
 			<android.support.design.widget.FloatingActionButton
 				android:id="@+id/floating_action_button"
@@ -47,11 +193,10 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="bottom|end"
 				android:layout_margin="@dimen/fab_margin"
-				android:src="@{ lastPage ? @drawable/ic_done : @drawable/ic_arrow_forward }"
+				android:src="@drawable/ic_done"
 				android:tint="@color/white"
 				app:elevation="4dp"
-				app:fabSize="normal"
-				tools:src="@drawable/ic_arrow_forward"/>
+				app:fabSize="normal"/>
 		</android.support.design.widget.CoordinatorLayout>
 	</RelativeLayout>
 </layout>

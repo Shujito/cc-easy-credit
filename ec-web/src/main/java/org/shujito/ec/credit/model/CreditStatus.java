@@ -1,4 +1,4 @@
-package org.shujito.ec.credit;
+package org.shujito.ec.credit.model;
 
 import lombok.Data;
 
@@ -7,7 +7,6 @@ import lombok.Data;
  */
 @Data
 public class CreditStatus {
-	int id;
 	int creditId;
-	int creditStatusId;
+	int creditStatusTypeId;
 }

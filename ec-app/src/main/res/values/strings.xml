@@ -1,7 +1,7 @@
 <resources>
 	<string name="app_name">EasyCredit</string>
-	<string name="amount">Monto a solicitar</string>
-	<string name="i_have_cc">Cuento con tarjeta de crédito</string>
+	<string name="new_request_amount">Monto a solicitar</string>
+	<string name="new_request_credit_card">Cuento con tarjeta de crédito</string>
 	<string name="profile">Perfil</string>
 	<string name="history">Historial</string>
 	<string name="credit_requests">Solicitudes</string>
@@ -12,4 +12,9 @@
 	<string name="new_request_total_label">Pago total despues del plazo</string>
 	<string name="credit_request_sample_amount">$ 4,000.00</string>
 	<string name="profile_caption_sample">Tienes 1 solicitud de crédito pendiente</string>
+	<string name="auth_username">Nombre de usuario</string>
+	<string name="auth_edad">Edad</string>
+	<string name="auth_access">Acceder</string>
+	<string name="select_payment_type">Debe seleccionar un plazo</string>
+	<string name="enter_amount">Ingrese el monto a solicitar</string>
 </resources>

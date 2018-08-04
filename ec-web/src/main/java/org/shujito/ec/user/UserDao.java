@@ -28,4 +28,7 @@ public interface UserDao {
 
 	@SqlQuery
 	User find(@Bind("id") int id);
+
+	@SqlQuery
+	User findByUsername(String username);
 }
