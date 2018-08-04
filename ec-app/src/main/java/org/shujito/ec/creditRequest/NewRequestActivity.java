@@ -12,13 +12,13 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.parceler.Parcels;
-import org.shujito.ec.EasyCreditApi;
-import org.shujito.ec.KeyboardHelpers;
+import org.shujito.ec.network.EasyCreditApi;
+import org.shujito.ec.util.KeyboardHelpers;
 import org.shujito.ec.R;
-import org.shujito.ec.SnackbarWrapper;
+import org.shujito.ec.util.SnackbarWrapper;
 import org.shujito.ec.databinding.NewRequestBinding;
-import org.shujito.ec.model.CreditRequest;
-import org.shujito.ec.model.User;
+import org.shujito.ec.network.CreditRequest;
+import org.shujito.ec.network.User;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

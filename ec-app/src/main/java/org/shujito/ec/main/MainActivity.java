@@ -11,11 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import org.parceler.Parcels;
-import org.shujito.ec.FragmentHelpers;
+import org.shujito.ec.util.FragmentHelpers;
 import org.shujito.ec.R;
 import org.shujito.ec.creditRequest.NewRequestActivity;
 import org.shujito.ec.databinding.MainBinding;
-import org.shujito.ec.model.User;
+import org.shujito.ec.main.pages.HistoryFragment;
+import org.shujito.ec.main.pages.ProfileFragment;
+import org.shujito.ec.main.pages.RequestFragment;
+import org.shujito.ec.network.User;
 
 /**
  * @author shujito, 7/28/18

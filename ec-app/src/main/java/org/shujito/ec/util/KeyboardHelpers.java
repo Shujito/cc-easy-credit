@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.util;
 
 import android.app.Activity;
 import android.content.Context;

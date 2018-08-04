@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.util;
 
 import android.content.Context;
 import android.support.annotation.StringRes;

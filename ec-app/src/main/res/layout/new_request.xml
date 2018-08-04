@@ -7,7 +7,7 @@
 
 		<variable
 			name="creditRequest"
-			type="org.shujito.ec.model.CreditRequest"/>
+			type="org.shujito.ec.network.CreditRequest"/>
 	</data>
 
 	<RelativeLayout

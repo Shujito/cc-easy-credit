@@ -1,4 +1,4 @@
-package org.shujito.ec.model;
+package org.shujito.ec.network;
 
 import com.google.gson.annotations.Expose;
 

@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.network;
 
 import android.net.Uri;
 import android.os.Build;
@@ -6,8 +6,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-import org.shujito.ec.model.Credit;
-import org.shujito.ec.model.User;
 import org.shujito.ec.util.GsonUtils;
 
 import java.util.concurrent.TimeUnit;

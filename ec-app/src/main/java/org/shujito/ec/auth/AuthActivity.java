@@ -1,4 +1,4 @@
-package org.shujito.ec;
+package org.shujito.ec.auth;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -11,9 +11,12 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.parceler.Parcels;
+import org.shujito.ec.network.EasyCreditApi;
+import org.shujito.ec.util.KeyboardHelpers;
+import org.shujito.ec.R;
 import org.shujito.ec.databinding.AuthBinding;
 import org.shujito.ec.main.MainActivity;
-import org.shujito.ec.model.User;
+import org.shujito.ec.network.User;
 import org.shujito.ec.util.NumberUtils;
 
 import io.reactivex.Observable;

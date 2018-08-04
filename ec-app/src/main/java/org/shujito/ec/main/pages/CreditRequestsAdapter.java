@@ -1,4 +1,4 @@
-package org.shujito.ec.main;
+package org.shujito.ec.main.pages;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
