@@ -68,7 +68,8 @@
 						android:layout_marginLeft="16dp"
 						android:layout_marginRight="16dp"
 						android:onCheckedChanged="@{ (v,b) -> creditRequest.setHasCreditCard(b) }"
-						android:text="@string/new_request_credit_card"/>
+						android:text="@string/new_request_credit_card"
+						android:visibility="gone"/>
 
 					<TextView
 						android:layout_width="match_parent"
@@ -89,7 +90,7 @@
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
 							android:layout_weight="1"
-							app:cardElevation="4dp">
+							app:cardElevation="@{ creditRequest.paymentType == 3 ? @dimen/_4dp : @dimen/_0dp}">
 
 							<org.shujito.ec.SquareLayout
 								android:layout_width="match_parent"
@@ -123,7 +124,8 @@
 							android:layout_height="wrap_content"
 							android:layout_marginLeft="8dp"
 							android:layout_marginRight="8dp"
-							android:layout_weight="1">
+							android:layout_weight="1"
+							app:cardElevation="@{ creditRequest.paymentType == 6 ? @dimen/_4dp : @dimen/_0dp}">
 
 							<org.shujito.ec.SquareLayout
 								android:layout_width="match_parent"
@@ -155,7 +157,8 @@
 						<android.support.v7.widget.CardView
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:layout_weight="1">
+							android:layout_weight="1"
+							app:cardElevation="@{ creditRequest.paymentType == 9 ? @dimen/_4dp : @dimen/_0dp}">
 
 							<org.shujito.ec.SquareLayout
 								android:layout_width="match_parent"

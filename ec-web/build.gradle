@@ -1,7 +1,19 @@
 apply plugin: 'application'
 
+mainClassName = 'org.shujito.ec.Application'
+version = '0.1'
+
 compileJava {
 	options.compilerArgs << '-parameters'
+}
+
+jar {
+	manifest {
+		attributes "Main-Class": "${mainClassName}"
+	}
+	from {
+		configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+	}
 }
 
 classes {
