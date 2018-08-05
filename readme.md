@@ -44,6 +44,10 @@ Toda la solución funciona en AndroidStudio 3.1.3
 
 <img width="320px" src="images/android-studio-version.png"/>
 
+#### Para ejecutar la aplicación móvil
+
+- Seleccione la configuración de la aplicación movil _ec-app_ y ejecute
+
 #### Para ejecutar la aplicación web desde Android Studio
 
 - Buscar la clase `org.shujito.ec.Application`
