@@ -16,7 +16,7 @@ import java.util.List;
 @RegisterBeanMapper(PaymentType.class)
 public interface PaymentTypeDao {
 	@SqlUpdate
-	void createTable();
+	int createTable();
 
 	@SqlQuery
 	List<PaymentType> all();

@@ -3,5 +3,5 @@ create table if not exists user (
 	username text,
 	age integer,
 	unique (username collate nocase),
-	constraint 'age range not valid' check (age >= 18 AND age <= 75)
+	constraint 'age range not valid' check (age >= 20)
 )

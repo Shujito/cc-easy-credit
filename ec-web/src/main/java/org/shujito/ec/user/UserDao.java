@@ -17,7 +17,7 @@ import java.util.List;
 @RegisterBeanMapper(User.class)
 public interface UserDao {
 	@SqlUpdate
-	void createTable();
+	int createTable();
 
 	@SqlQuery
 	List<User> all();

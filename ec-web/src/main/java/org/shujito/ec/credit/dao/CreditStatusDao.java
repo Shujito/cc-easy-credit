@@ -15,7 +15,7 @@ import org.shujito.ec.credit.model.CreditStatus;
 @RegisterBeanMapper(CreditStatus.class)
 public interface CreditStatusDao {
 	@SqlUpdate
-	void createTable();
+	int createTable();
 
 	@SqlUpdate
 	int insert(@BindBean CreditStatus newCreditStatus);

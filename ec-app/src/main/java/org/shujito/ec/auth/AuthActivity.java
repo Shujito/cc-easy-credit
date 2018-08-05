@@ -11,12 +11,12 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.parceler.Parcels;
-import org.shujito.ec.network.EasyCreditApi;
-import org.shujito.ec.util.KeyboardHelpers;
 import org.shujito.ec.R;
 import org.shujito.ec.databinding.AuthBinding;
 import org.shujito.ec.main.MainActivity;
+import org.shujito.ec.network.EasyCreditApi;
 import org.shujito.ec.network.User;
+import org.shujito.ec.util.KeyboardHelpers;
 import org.shujito.ec.util.NumberUtils;
 
 import io.reactivex.Observable;
@@ -55,20 +55,14 @@ public class AuthActivity extends RxAppCompatActivity {
 				.map(NumberUtils::parseInt),
 			(username, age) -> {
 				boolean usernameCheck = username.length() > 2;
-				boolean ageCheck = age >= 18 && age <= 75;
+				boolean ageCheck = age >= 20;
 				if (!usernameCheck && username.length() > 0) {
 					binding.usernameLabel.setError("Al menos dos caracteres");
 				} else {
 					binding.usernameLabel.setError(null);
 				}
 				if (!ageCheck && age > 0) {
-					if (age <= 18) {
-						binding.ageLabel.setError("No menores de 18");
-					} else if (age >= 75) {
-						binding.ageLabel.setError("No mayores de 75");
-					} else {
-						binding.ageLabel.setError(null);
-					}
+					binding.ageLabel.setError("No menores de 20");
 				} else {
 					binding.ageLabel.setError(null);
 				}

@@ -47,10 +47,6 @@ public interface CreditService {
 
 	@Transaction
 	default void initialize() {
-		this.creditDao().createTable();
-		this.paymentTypeDao().createTable();
-		this.creditStatusDao().createTable();
-		this.creditStatusTypeDao().createTable();
 		if (this.paymentTypeDao().all().size() == 0) {
 			PaymentType paymentType = new PaymentType();
 			paymentType.setMonths(3);

@@ -1,5 +1,7 @@
 package org.shujito.ec;
 
+import java.util.Timer;
+
 import ro.pippo.core.Pippo;
 
 public class Application {
@@ -8,5 +10,7 @@ public class Application {
 		pippo.getServer().getSettings().port(7070);
 		pippo.getServer().getSettings().host(null);
 		pippo.start();
+		Timer timer = new Timer();
+		timer.schedule(new CreditRequestTimerTask(), 0, 5000);
 	}
 }

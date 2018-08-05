@@ -18,10 +18,6 @@ import ro.pippo.controller.extractor.Param;
 public class UserController extends Controller {
 	private final UserDao userDao = Database.getJdbi().onDemand(UserDao.class);
 
-	public UserController() {
-		this.userDao.createTable();
-	}
-
 	@POST
 	@Produces(Produces.JSON)
 	public User post(@NonNull @Param String username, @Param Integer age) {

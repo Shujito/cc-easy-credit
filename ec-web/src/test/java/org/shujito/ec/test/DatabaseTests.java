@@ -75,20 +75,6 @@ public class DatabaseTests {
 					e.getCause() instanceof SQLiteException
 				);
 			}
-			user.setAge(80);
-			try {
-				dao.insert(user);
-				fail("no se debió haber insertado el registro");
-			} catch (Exception e) {
-				assertTrue(String.format("el tipo de la excepción debió ser %s",
-					UnableToExecuteStatementException.class.getName()),
-					e instanceof UnableToExecuteStatementException);
-				assertNotNull("la causa de la excepción no debió ser nula", e.getCause());
-				assertTrue(String.format("el tipo de la causa debió ser %s",
-					SQLiteException.class.getName()),
-					e.getCause() instanceof SQLiteException
-				);
-			}
 			return dao.all();
 		});
 		assertEquals("no se debieron haber insertado usuarios", users.size(), 0);

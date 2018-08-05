@@ -18,7 +18,7 @@ import java.util.List;
 @RegisterBeanMapper(CreditStatusType.class)
 public interface CreditStatusTypeDao {
 	@SqlUpdate
-	void createTable();
+	int createTable();
 
 	@SqlUpdate
 	@GetGeneratedKeys
