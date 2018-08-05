@@ -11,15 +11,22 @@ Asunciones hechas
 #### Técnicas
 
 - Opté por usar java para el backend:
-  - Se utilizó el micro framework [pippo](https://pippo.ro/), que es un ruteador para endpoints, puede usarse para servicios REST y para servir páginas web; sólo utilicé servicios REST
-  - Para la base de datos se usa SQLite, que por ser simple, sirve para esta actividad.
-  - Para la conexión a base de datos se usó [JDBI](http://jdbi.org/), el cual permite crear ORMs con interfaces y anotaciones con consultas SQL; su uso es bastante parecido a retrofit.
+  - Se utilizó el micro framework [pippo](https://pippo.ro/), que es un
+  ruteador para endpoints, puede usarse para servicios REST y para servir
+  páginas web; sólo utilicé servicios REST
+  - Para la base de datos se usa SQLite, que por ser simple, sirve para
+  esta actividad.
+  - Para la conexión a base de datos se usó [JDBI](http://jdbi.org/),
+  el cual permite crear ORMs con interfaces y anotaciones con consultas
+  SQL; su uso es bastante parecido a retrofit.
 - El front end es una aplicación android, se utilizó lo siguiente
   - databinding
   - retrofit
   - gson
   - rxjava
-- Pudo haber quedado más sencillo, aún así quise dejar una base de datos un poco más sólida e íntegra (un par de catálogos agregados en lugar de usar campos simples)
+- Pudo haber quedado más sencillo, aún así quise dejar una base de datos
+un poco más sólida e íntegra (un par de catálogos en lugar de usar
+campos simples)
 
 #### Requerimientos
 
@@ -40,7 +47,8 @@ Toda la solución funciona en AndroidStudio 3.1.3
 #### Para ejecutar la aplicación web desde Android Studio
 
 - Buscar la clase `org.shujito.ec.Application`
-- Hacer click en la flecha para desplegar el menú, seleccionar _Run 'Application.main()'_ (la aplicación fallará en este paso)
+- Hacer click en la flecha para desplegar el menú, seleccionar _Run
+'Application.main()'_ (la aplicación fallará en este paso)
 
 <img width="320" src="images/web-1.png" />
 
@@ -101,5 +109,18 @@ Se ejecutan desde el IDE (Android Studio)
 - Buscar la clase `org.shujito.ec.test.DatabaseTests`
 - Hacer click en el círculo para ejecutar las pruebas
 
-![](images/tests.png)
+<img width="320" src="images/tests.png"/>
 
+###### Problemas enfrentados
+
+- Configurar las pruebas unitarias tomó tiempo
+- Removí algunos formularios que hice en la aplicación móvil
+- Creo que debí haber comenzado por el backend, pudo haber quedado más
+simple la aplicación movil
+
+###### Crítica hacia la activida
+
+Las especificaciones que vienen en el documento aparentan ser
+abrumadoras pero en realidad el proyecto está simple de entender, el
+que se permita especificar asunciones y requerimientos no implementados
+aligeró un poco la carga mental al momento de la entrega
