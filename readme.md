@@ -11,11 +11,13 @@ Asunciones hechas
 #### Técnicas
 
 - Opté por usar java para el backend:
+  - Las dependencias se manejan en gradle, y se descargan automáticamente
   - Se utilizó el micro framework [pippo](https://pippo.ro/), que es un
   ruteador para endpoints, puede usarse para servicios REST y para servir
   páginas web; sólo utilicé servicios REST
   - Para la base de datos se usa SQLite, que por ser simple, sirve para
-  esta actividad.
+  esta actividad. Además que las consultas vienen incluidas en la misma
+  aplicación web
   - Para la conexión a base de datos se usó [JDBI](http://jdbi.org/),
   el cual permite crear ORMs con interfaces y anotaciones con consultas
   SQL; su uso es bastante parecido a retrofit.
