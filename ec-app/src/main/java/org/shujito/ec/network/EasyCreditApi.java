@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import org.shujito.ec.BuildConfig;
 import org.shujito.ec.util.GsonUtils;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public class EasyCreditApi {
 		if (hardware.matches("(goldfish|ranchu)")) {
 			BASE_URL = "http://10.0.2.2:7070/";
 		} else {
-			BASE_URL = "http://192.168.1.10:7070/";
+			BASE_URL = BuildConfig.API_BASE_URL;
 		}
 		URI = Uri.parse(BASE_URL);
 		GSON = GsonUtils.create();
